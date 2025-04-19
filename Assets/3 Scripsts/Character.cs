@@ -71,6 +71,12 @@ public class Character : MonoBehaviour
         return moveEnd;
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Vector2 moveDelta = - presentMove.direction * 0.005f;
+        rb.MovePosition(rb.position + moveDelta);
+    }
+
     //private void OnCollisionEnter2D(Collision2D collision)
     //{
     //    moveEnd = true;

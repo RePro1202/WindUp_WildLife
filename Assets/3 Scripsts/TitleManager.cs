@@ -29,7 +29,7 @@ public class TitleManager : MonoBehaviour
             StartGame();
         }
 
-        if (isGameOver && Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             RestartGame();
         }
