@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -16,25 +17,32 @@ public class BlockSpawner : MonoBehaviour
         SpawnBlocks(width, height, obstacleNum);   
     }
 
-    // 장애물, 또는 트릭 블록 랜덤 생성
     private void SpawnBlocks(int width, int height, int blockNum)
     {
-        for (int i = 0; i < blockNum; i++)
-        {
-            int randX = Random.Range(0, width);
-            int randY = Random.Range(0, height);
-            Vector3Int pos = new Vector3Int(randX, randY, 0);
+        List<Vector3Int> availablePositions = new List<Vector3Int>();
 
-            // 중복 방지 
-            if (tilemap.GetTile(pos))
+        // 모든 좌표를 수집
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
             {
-                tilemap.SetTile(pos, obstacleBlock);
-            }
-            else
-            {
-                i--; // 실패했으니 다시 시도
+                Vector3Int pos = new Vector3Int(x, y, 0);
+                availablePositions.Add(pos);
             }
         }
+
+        // blockNum보다 위치 수가 작으면 에러 방지
+        blockNum = Mathf.Min(blockNum, availablePositions.Count);
+
+        for (int i = 0; i < blockNum; i++)
+        {
+            int randIndex = Random.Range(0, availablePositions.Count);
+            Vector3Int pos = availablePositions[randIndex];
+            availablePositions.RemoveAt(randIndex); // 중복 방지
+
+            tilemap.SetTile(pos, obstacleBlock);
+        }
     }
+
 
 }
