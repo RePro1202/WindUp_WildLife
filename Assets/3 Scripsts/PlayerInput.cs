@@ -1,9 +1,12 @@
+using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] int maxQueueLength = 8;
+
     private List<MoveData> moveList = new List<MoveData>();
 
     private Character character;
@@ -50,7 +53,6 @@ public class PlayerInput : MonoBehaviour
                 {
                     moveList.Add(new MoveData(Vector2.right, heldTime));
                 }
-                    
                 updateRemainTime(heldTime);
 
                 isPressed = false;
@@ -59,6 +61,11 @@ public class PlayerInput : MonoBehaviour
         }
         else if(!(GameManager.Instance.GetTimeOut()))
         {
+            if (maxQueueLength <= moveList.Count)
+            {
+                return;
+            }
+
             if (Input.GetKeyDown(KeyCode.W))
             {
                 PressKey(KeyCode.W);
