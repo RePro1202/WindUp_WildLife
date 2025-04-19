@@ -9,8 +9,20 @@ EditorBuildSettings:
     path: Assets/0 Scenes/TitleScene.unity
     guid: 4556c4c40331d334ca6a0b1c62240e1c
   - enabled: 1
-    path: Assets/TestScenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/0 Scenes/Map1.unity
+    guid: 9c65cb8f8c8aeab4e96d63bf1fa3c1f0
+  - enabled: 1
+    path: Assets/0 Scenes/Map2.unity
+    guid: faf1c1fee40a71f4aa241d07a17c3ecc
+  - enabled: 1
+    path: Assets/0 Scenes/Map3.unity
+    guid: 62ca84aebca27d64eb14cffeeb5eb8de
+  - enabled: 1
+    path: Assets/0 Scenes/Map4.unity
+    guid: b9337f12a692d9f4ea7aa29fbc8ae059
+  - enabled: 1
+    path: Assets/0 Scenes/Map5.unity
+    guid: 37833cd31c102ee4b900831324a7dd01
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
