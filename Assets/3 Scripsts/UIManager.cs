@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Image fadeImage;
     [SerializeField] GameObject retryUI;
+    [SerializeField] TextMeshProUGUI stageTxt;
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(FadeInAndOut(true));
+        int stageIndex = SceneManager.GetActiveScene().buildIndex;
+        stageTxt.text = "STAGE " + stageIndex;
     }
 
     public void SpawnArrow(EKeyType eKeyType, float heldTime)
@@ -106,6 +109,7 @@ public class UIManager : MonoBehaviour
             }
 
             // 씬 전환 로직
+            TitleManager.Instance.NextStage();
         }
        
     }
