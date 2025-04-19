@@ -8,14 +8,14 @@ using UnityEngine.Experimental.Rendering;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float moveSpeed = 2f;
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     private MoveData presentMove;
     private List<MoveData> moveQueue;
-    private int index = 0, indexcount;
+    private int index, indexcount;
     private bool moveEnd = true;
-    public float descent = 0.4f;
+    public float descent = 2f;
 
     private void Awake()
     {
@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     {
         moveQueue = playerInput.GetMoveQueue();
         indexcount = moveQueue.Count;
+        index = 0;
         presentMove = moveQueue[0];
         moveEnd = false;
         //StartCoroutine(ProcessMoveQueue(moveQueue));
