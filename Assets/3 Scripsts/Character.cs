@@ -28,9 +28,12 @@ public class Character : MonoBehaviour
         moveQueue = playerInput.GetMoveQueue();
         index = 0;
 
-        if(moveQueue.Count > 0)
-            presentMove = moveQueue[0];
+        if (moveQueue.Count < 1)
+        {
+            return;
+        }
 
+        presentMove = moveQueue[0];
         moveEnd = false;
     }
 
