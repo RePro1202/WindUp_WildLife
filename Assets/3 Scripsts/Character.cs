@@ -7,8 +7,7 @@ using UnityEngine.EventSystems;
 public class Character : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
-
-    [SerializeField] PlayerInput playerInput;
+    [SerializeField] private PlayerInput playerInput;
 
     public void MoveStart()
     {
@@ -38,5 +37,10 @@ public class Character : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
+    }
+
+    public PlayerInput GetPlayerInput()
+    {
+        return playerInput;
     }
 }

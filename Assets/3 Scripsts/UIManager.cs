@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image arrowImage;
     [SerializeField] Transform arrowPos;
     EKeyType keyType;
-    List<>
+    //List<>
 
     /*public void SpawnArrow(EKeyType eKeyType ,float heldTime)
     {

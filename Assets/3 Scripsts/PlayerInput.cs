@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     private KeyCode? currentKey = null;
     private float keyDownTime = 0f;       
     private bool isPressed = false;
+    private float heldTime = 0f;
 
     private void Awake()
     {
@@ -19,11 +20,12 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if(isPressed)
+        if(isPressed && currentKey.HasValue)
         {
-            if (currentKey.HasValue && Input.GetKeyUp(currentKey.Value))
+            heldTime = Time.time - keyDownTime;
+
+            if (Input.GetKeyUp(currentKey.Value))
             {
-                float heldTime = Time.time - keyDownTime;
                 Debug.Log($"{currentKey} 눌린 시간: {heldTime:F2}초");
 
                 if (currentKey.Value == KeyCode.W)
@@ -34,7 +36,6 @@ public class PlayerInput : MonoBehaviour
                     moveList.Add(new MoveData(Vector2.down, heldTime));
                 else if (currentKey.Value == KeyCode.D)
                     moveList.Add(new MoveData(Vector2.right, heldTime));
-
 
                 updateRemainTime(heldTime);
 
@@ -53,14 +54,6 @@ public class PlayerInput : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.D))
                 PressKey(KeyCode.D);
         }
-
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    character.MoveStart();
-        //
-        //    isPressed = false;
-        //    currentKey = null;
-        //}
     }
 
     private void PressKey(KeyCode key)
@@ -78,6 +71,11 @@ public class PlayerInput : MonoBehaviour
     public List<MoveData> GetMoveQueue()
     {
         return moveList;
+    }
+
+    public float GetCurHeldTime()
+    {
+        return heldTime;
     }
 
     public void ResetMoveQueue()

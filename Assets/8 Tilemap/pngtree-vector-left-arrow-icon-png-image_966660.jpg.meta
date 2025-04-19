@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pngtree-vector-left-arrow-icon-png-image_966660_0: 540997939577735683
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
