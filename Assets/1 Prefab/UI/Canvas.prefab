@@ -462,8 +462,8 @@ RectTransform:
   - {fileID: 3018811464125638199}
   - {fileID: 3493536003289690177}
   - {fileID: 1023635944777420402}
-  - {fileID: 8213222530790218257}
   - {fileID: 323819338318009510}
+  - {fileID: 8213222530790218257}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -813,8 +813,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e74e6fe1939f5194896647ada0ccaef3, type: 2}
+  m_sharedMaterial: {fileID: -4487707971032989303, guid: e74e6fe1939f5194896647ada0ccaef3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1674,7 +1674,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnClickRetryBtn
+        m_MethodName: ShowRetryUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

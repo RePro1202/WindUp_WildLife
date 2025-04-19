@@ -29,8 +29,7 @@ public class Character : MonoBehaviour
     {
         if(curStartCount >= GameManager.Instance.GetRemainStartCount())
         {
-            TitleManager.Instance.GameOver();
-            Debug.Log("GameOver");
+            UIManager.Instance.ShowRetryUI();
             return;
         }
 

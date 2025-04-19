@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class TitleManager : MonoBehaviour
 {
@@ -7,19 +8,15 @@ public class TitleManager : MonoBehaviour
 
     public bool isGameActive = false;
     public bool isGameOver = false;
-    public bool isStageClear = false;
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // 씬 바뀌어도 유지
-        }
-        else
+        if (Instance != null)
         {
             Destroy(gameObject);
+            return;
         }
+        Instance = this;
     }
 
     void Update()
@@ -34,17 +31,12 @@ public class TitleManager : MonoBehaviour
             RestartGame();
         }
 
-        if (isStageClear)
-        {
-            NextStage();
-        }
     }
 
     public void StartGame()
     {
         isGameActive = true;
         isGameOver = false;
-        isStageClear = false;
         Debug.Log("게임 시작!");
         // 게임 시작 시 필요한 초기화 로직 추가
     }
@@ -57,11 +49,11 @@ public class TitleManager : MonoBehaviour
         // 게임 오버 UI 띄우기 등 추가
     }
 
-    public void StageClear()
+    public IEnumerator StageClear()
     {
-        isStageClear = true;
-        Debug.Log("스테이지 클리어!");
-        // 스테이지 클리어
+        StartCoroutine(UIManager.Instance.FadeInAndOut(false));
+        yield return new WaitUntil(() => UIManager.Instance.isFinished);
+        NextStage();
     }
 
     public void RestartGame()
@@ -73,6 +65,15 @@ public class TitleManager : MonoBehaviour
     public void NextStage()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+
+        if (nextSceneIndex > 5)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+
     }
 }

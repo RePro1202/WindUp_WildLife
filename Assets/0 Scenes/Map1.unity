@@ -1780,6 +1780,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7547846986565825171, guid: f1e02d63ddc388141a424e4c29f6b9c8, type: 3}
+      propertyPath: buttons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547846986565825171, guid: f1e02d63ddc388141a424e4c29f6b9c8, type: 3}
       propertyPath: 'buttons.Array.data[0]'
       value: 
       objectReference: {fileID: 1957724934}
@@ -2100,6 +2104,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1188702109}
+    - target: {fileID: 7517967453050997270, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4811381856140726642}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4290,6 +4298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88acaebe404cbf947b394adf3c692e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFinished: 0
   arrowImage:
   - {fileID: 5543648492944062542, guid: 47f0d3802f7167b4a97daf35df71a7f4, type: 3}
   - {fileID: 5543648492944062542, guid: fc7c3664c81d762488396a1bd12f4055, type: 3}
@@ -4378,7 +4387,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameActive: 0
   isGameOver: 0
-  isStageClear: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

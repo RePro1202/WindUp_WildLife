@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public enum EKeyType { W,A,S,D}
 public class UIManager : MonoBehaviour
 {
+    public bool isFinished = false;
     [Tooltip("W,A,S,D 순서대로")]
     [SerializeField] Image[] arrowImage;
 
@@ -37,7 +38,7 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(FadeInAndOut(true));
         int stageIndex = SceneManager.GetActiveScene().buildIndex;
-        //stageTxt.text = "STAGE " + stageIndex;
+        stageTxt.text = "STAGE " + stageIndex;
     }
 
     public void SpawnArrow(EKeyType eKeyType, float heldTime)
@@ -84,6 +85,7 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator FadeInAndOut(bool isOpen)
     {
+        isFinished = false;
         if (isOpen)
         {
             Color color = fadeImage.color;
@@ -107,9 +109,7 @@ public class UIManager : MonoBehaviour
                 fadeImage.color = color;
                 yield return null;
             }
-
-            // 씬 전환 로직
-            TitleManager.Instance.NextStage();
+            isFinished = true;
         }
        
     }

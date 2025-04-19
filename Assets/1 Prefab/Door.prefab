@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons:
   - {fileID: 0}
+  - {fileID: 0}
   IsOpen: 0
   CloseSprite: {fileID: 2091131283656503301, guid: 7ff0380d514917e42a509f75ca090752, type: 3}
   OpenSprite: {fileID: 2988244149849798914, guid: 8be0d052389481c429f23d251f59ea8e, type: 3}
