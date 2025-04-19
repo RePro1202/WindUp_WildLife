@@ -35,8 +35,12 @@ public class DoorBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsOpen) 
+        if (IsOpen)
+        {
             Debug.Log("Game Clear");
+
+        }
+            
     }
 
     // 모든 버튼이 눌렸는지 확인하는 함수

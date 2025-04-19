@@ -32,5 +32,6 @@ public class CarBehaviour : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Game over");
+        TitleManager.Instance.GameOver();
     }
 }
