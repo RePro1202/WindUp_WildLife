@@ -1733,6 +1733,7 @@ MonoBehaviour:
   arrowPos: {fileID: 1697465796}
   fadeImage: {fileID: 1183092457}
   retryUI: {fileID: 2119390082}
+  stageTxt: {fileID: 1863333682}
 --- !u!82 &867057161
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2261,18 +2262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4481118205197296927, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7499371901377389176, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1188702109}
-    - target: {fileID: 7499371901377389176, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveStart
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2283,6 +2276,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1075391319024982707, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
   m_PrefabInstance: {fileID: 1582549662}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1863333682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4873979196932598008, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
+  m_PrefabInstance: {fileID: 1582549662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1957724934 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 479190995758813991, guid: 4a48ad80e00ea624194f5cd64a221bd2, type: 3}
