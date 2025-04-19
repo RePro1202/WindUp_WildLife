@@ -109,6 +109,7 @@ public class UIManager : MonoBehaviour
             }
 
             // 씬 전환 로직
+            TitleManager.Instance.NextStage();
         }
        
     }
