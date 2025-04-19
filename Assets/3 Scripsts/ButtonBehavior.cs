@@ -10,6 +10,14 @@ public class ButtonBehavior : MonoBehaviour
     public Sprite inactiveSprite; 
     public Sprite activeSprite;
 
+    private SpriteRenderer spriteRenderer;
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = inactiveSprite;
+    }
+
     void Update()
     {
         if (isOverlapping && !isActivated)
@@ -31,15 +39,17 @@ public class ButtonBehavior : MonoBehaviour
     private void ActivateButton()
     {
         isActivated = true;
+        spriteRenderer.sprite = activeSprite;
         Debug.Log("버튼이 켜졌습니다!");
-        // 여기에 버튼 작동 로직 추가
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("버튼 누르는 중");
         if (other.CompareTag("Player")) // 혹은 적절한 태그로 체크
         {
             isOverlapping = true;
+            
         }
     }
 

@@ -28,4 +28,9 @@ public class CarBehaviour : MonoBehaviour
             direction = 1;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Game over");
+    }
 }
