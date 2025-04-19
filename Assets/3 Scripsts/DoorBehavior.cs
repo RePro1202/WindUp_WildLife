@@ -38,7 +38,7 @@ public class DoorBehavior : MonoBehaviour
         if (IsOpen)
         {
             Debug.Log("Game Clear");
-
+            TitleManager.Instance.StageClear();
         }
             
     }
