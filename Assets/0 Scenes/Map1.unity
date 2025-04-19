@@ -4479,7 +4479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -400, y: 300}
+  m_AnchoredPosition: {x: -150, y: 80}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3678274689792760639
@@ -4579,6 +4579,7 @@ GameObject:
   - component: {fileID: 3731096417659716307}
   - component: {fileID: 8544575000721255332}
   - component: {fileID: 8455297869513380465}
+  - component: {fileID: 8544575000721255333}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -4972,6 +4973,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8544575000721255333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918619053304199906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112e27d4c6d9e834fa8afd69bbbcd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 8507257625429523539}
 --- !u!114 &8635662843002542510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4990,7 +5004,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 867057159}
   - {fileID: 1403192816}
   - {fileID: 1266080126}
   - {fileID: 865834832}
@@ -5000,3 +5013,4 @@ SceneRoots:
   - {fileID: 706545787}
   - {fileID: 1064151190}
   - {fileID: 1738991051035228536}
+  - {fileID: 867057159}

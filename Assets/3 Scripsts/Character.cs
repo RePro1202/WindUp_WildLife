@@ -17,6 +17,8 @@ public class Character : MonoBehaviour
     private bool moveEnd = true;
     public float descent = 2f;
 
+    private int curStartCount = 0;
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -25,6 +27,13 @@ public class Character : MonoBehaviour
 
     public void MoveStart()
     {
+        if(curStartCount >= GameManager.Instance.GetRemainStartCount())
+        {
+            // TODO : 게임 오버 호출 해야함.
+            Debug.Log("GameOver");
+            return;
+        }
+
         moveQueue = playerInput.GetMoveQueue();
         index = 0;
 
@@ -32,6 +41,8 @@ public class Character : MonoBehaviour
             presentMove = moveQueue[0];
 
         moveEnd = false;
+
+        GameManager.Instance.SetRemainStartCount();
     }
 
     void FixedUpdate()

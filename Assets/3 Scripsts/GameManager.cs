@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,9 +8,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float maxMoveTime = 10f;
     [SerializeField] private bool timeOut = false;
+    [SerializeField] private int startCount = 4;
 
     private float remainMoveTime;
     public event Action<float> OnRemainTimeChanged;
+
+    private int remainStartCount;
+    public event Action<int> OnRemainStartCount;
 
     private Character character;
 
@@ -22,6 +27,7 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
 
+        remainStartCount = startCount;
         remainMoveTime = maxMoveTime;
     }
 
@@ -44,6 +50,12 @@ public class GameManager : MonoBehaviour
         OnRemainTimeChanged?.Invoke(remainMoveTime);
     }
 
+    public void SetRemainStartCount()
+    {
+        remainStartCount -= 1;
+        OnRemainStartCount?.Invoke(remainStartCount);
+    }
+
     public float GetMaxMoveTime()
     {
         return maxMoveTime;
@@ -62,5 +74,10 @@ public class GameManager : MonoBehaviour
     public bool GetTimeOut()
     {
         return timeOut;
+    }
+
+    public int GetRemainStartCount()
+    {
+        return remainStartCount;
     }
 }
