@@ -7,7 +7,12 @@ using UnityEngine.EventSystems;
 public class Character : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private PlayerInput playerInput;
+    private PlayerInput playerInput;
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
 
     public void MoveStart()
     {

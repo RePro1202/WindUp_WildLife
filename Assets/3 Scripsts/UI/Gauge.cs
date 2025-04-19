@@ -11,7 +11,7 @@ public class Gauge : MonoBehaviour
     private float displayValue = 3f;
     [SerializeField] private float smoothSpeed = 5f;
 
-    private PlayerInput playerInput;
+    [SerializeField] private PlayerInput playerInput;
 
     private void Start()
     {
@@ -19,8 +19,7 @@ public class Gauge : MonoBehaviour
 
         maxValue = GameManager.Instance.GetMaxMoveTime();
         targetValue = maxValue;
-
-        playerInput = GameManager.Instance.GetCharacter().GetPlayerInput();
+        //playerInput = GameManager.Instance.GetCharacter().GetPlayerInput();
     }
 
     private void Update()
@@ -28,12 +27,11 @@ public class Gauge : MonoBehaviour
         displayValue = Mathf.Lerp(displayValue, targetValue, Time.deltaTime * smoothSpeed);
         middleImage.fillAmount = displayValue / maxValue;
 
-        topImage.fillAmount = (displayValue - playerInput.GetCurHeldTime()) / maxValue;
+        topImage.fillAmount = (targetValue - (playerInput.GetCurHeldTime() * Time.deltaTime)) / maxValue;
     }
 
     public void UpdateRemainTime(float remainTime)
     {
         targetValue = Mathf.Clamp(remainTime, 0, maxValue);
-        topImage.fillAmount = displayValue / maxValue;
     }
 }
