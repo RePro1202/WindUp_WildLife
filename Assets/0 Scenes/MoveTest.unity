@@ -414,6 +414,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10f1f290d4a1f5d43970ae2b09a392e3, type: 3}
+--- !u!114 &1284946444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4104678231088079997, guid: 10f1f290d4a1f5d43970ae2b09a392e3, type: 3}
+  m_PrefabInstance: {fileID: 1284946443}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e66a18f1d3da814da348ff1a3e16695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1606490820
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +438,7 @@ GameObject:
   - component: {fileID: 1606490823}
   - component: {fileID: 1606490822}
   m_Layer: 5
-  m_Name: Start
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -496,7 +507,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1606490823}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1284946444}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: MoveStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1606490823
 MonoBehaviour:
   m_ObjectHideFlags: 0
