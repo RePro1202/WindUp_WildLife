@@ -6,17 +6,31 @@ using NUnit.Framework;
 public enum EKeyType { W,A,S,D}
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] Image arrowImage;
+    [Tooltip("W,A,S,D 순서대로")]
+    [SerializeField] Image[] arrowImage;
+
     [SerializeField] Transform arrowPos;
     EKeyType keyType;
-    List<>
 
-    /*public void SpawnArrow(EKeyType eKeyType ,float heldTime)
+    
+    public void SpawnArrow(EKeyType eKeyType, float heldTime)
     {
+        Image arrow = Instantiate(arrowImage[(int)eKeyType], arrowPos);
+
         switch (eKeyType)
         {
             case EKeyType.W:
-                Instantiate
+                arrow.GetComponentInChildren<TextMeshProUGUI>().text = heldTime.ToString();
+                break;
+            case EKeyType.A:
+                arrow.GetComponentInChildren<TextMeshProUGUI>().text = heldTime.ToString();
+                break;
+            case EKeyType.S:
+                arrow.GetComponentInChildren<TextMeshProUGUI>().text = heldTime.ToString();
+                break;
+            case EKeyType.D:
+                arrow.GetComponentInChildren<TextMeshProUGUI>().text = heldTime.ToString();
+                break;
         }
-    }*/
+    }
 }
