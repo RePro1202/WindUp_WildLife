@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private float remainMoveTime;
     public event Action<float> OnRemainTimeChanged;
 
+    private Character character;
+
     private void Awake()
     {
         if (Instance != null)
@@ -21,6 +23,11 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         remainMoveTime = maxMoveTime;
+    }
+
+    private void Start()
+    {
+        character = FindFirstObjectByType<Character>();
     }
 
 
@@ -45,6 +52,11 @@ public class GameManager : MonoBehaviour
     public float GetRemainMoveTime()
     {
         return remainMoveTime;
+    }
+
+    public Character GetCharacter()
+    {
+        return character;
     }
 
     public bool GetTimeOut()
