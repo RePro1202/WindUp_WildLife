@@ -119,18 +119,30 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &702516800 stripped
+--- !u!1 &1208004421
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1873458328098608039, guid: 369db09257433034c9b5a4af26df71fd, type: 3}
-  m_PrefabInstance: {fileID: 1977897385160914824}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &702516803
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1208004423}
+  - component: {fileID: 1208004422}
+  m_Layer: 0
+  m_Name: TitleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1208004422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702516800}
+  m_GameObject: {fileID: 1208004421}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9280e7461430b4f4e903e34f3c9834a2, type: 3}
@@ -139,6 +151,21 @@ MonoBehaviour:
   isGameActive: 0
   isGameOver: 0
   isStageClear: 0
+--- !u!4 &1208004423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208004421}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.015058033, y: 0.45177054, z: -0.095341615}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2049730560
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,10 +358,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1873458328098608039, guid: 369db09257433034c9b5a4af26df71fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 702516803}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 369db09257433034c9b5a4af26df71fd, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -342,3 +366,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 2049730563}
   - {fileID: 1977897385160914824}
+  - {fileID: 1208004423}
