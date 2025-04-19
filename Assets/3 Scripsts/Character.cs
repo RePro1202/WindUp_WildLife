@@ -73,6 +73,7 @@ public class Character : MonoBehaviour
         }
 
         playerInput.ResetMoveQueue();
+        UIManager.Instance.ClearArrow();
     }
 
     IEnumerator MoveForTime(Vector3 dir, float duration)
@@ -90,5 +91,17 @@ public class Character : MonoBehaviour
     public PlayerInput GetPlayerInput()
     {
         return playerInput;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.ToString());
+
+        if (collision.tag == "Obstacle" || collision.tag == "Border")
+        {
+            StopAllCoroutines();
+            playerInput.ResetMoveQueue();
+            UIManager.Instance.ClearArrow();
+        }
     }
 }
