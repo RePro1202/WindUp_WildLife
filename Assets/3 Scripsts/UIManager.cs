@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public enum EKeyType { W,A,S,D}
 public class UIManager : MonoBehaviour
@@ -17,6 +19,9 @@ public class UIManager : MonoBehaviour
 
     List<Image> curArrowList = new List<Image>();
 
+    [SerializeField] Image fadeImage;
+    [SerializeField] GameObject retryUI;
+
     private void Awake()
     {
         if (Instance != null)
@@ -25,6 +30,11 @@ public class UIManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(FadeInAndOut(true));
     }
 
     public void SpawnArrow(EKeyType eKeyType, float heldTime)
@@ -67,5 +77,46 @@ public class UIManager : MonoBehaviour
         }
 
         curArrowList.Clear();
+    }
+
+    public IEnumerator FadeInAndOut(bool isOpen)
+    {
+        if (isOpen)
+        {
+            Color color = fadeImage.color;
+            color.a = 1f;
+
+            while (color.a > 0f)
+            {
+                color.a -= Time.deltaTime;
+                fadeImage.color = color;
+                yield return null;
+            }
+        }
+        else
+        {
+            Color color = fadeImage.color;
+            color.a = 0f;
+
+            while (color.a < 1f)
+            {
+                color.a += Time.deltaTime;
+                fadeImage.color = color;
+                yield return null;
+            }
+
+            // ¾À ÀüÈ¯ ·ÎÁ÷
+        }
+       
+    }
+
+    public void ShowRetryUI()
+    {
+        retryUI.SetActive(true);
+    }
+
+    public void OnClickRetryBtn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

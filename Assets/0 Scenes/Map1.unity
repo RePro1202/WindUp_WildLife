@@ -1823,6 +1823,8 @@ MonoBehaviour:
   - {fileID: 5543648492944062542, guid: 25f5cb2f79dd0c643bdc1b2bd818a429, type: 3}
   - {fileID: 5543648492944062542, guid: d2c5536ee8094104587cc6ee72b29cb8, type: 3}
   arrowPos: {fileID: 622370055}
+  fadeImage: {fileID: 1534243261}
+  retryUI: {fileID: 0}
 --- !u!82 &867057161
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2161,6 +2163,17 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1534243261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6274583892696312047, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
+  m_PrefabInstance: {fileID: 2108915666086227977}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1969896490
 GameObject:
   m_ObjectHideFlags: 0
@@ -4337,6 +4350,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2125886168}
+    - target: {fileID: 7517967453050997270, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 867057160}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
