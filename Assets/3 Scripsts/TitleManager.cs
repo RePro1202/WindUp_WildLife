@@ -34,7 +34,7 @@ public class TitleManager : MonoBehaviour
             RestartGame();
         }
 
-        if (isStageClear && Input.GetKeyDown(KeyCode.Space))
+        if (isStageClear)
         {
             NextStage();
         }
