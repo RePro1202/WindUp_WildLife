@@ -13,34 +13,30 @@ public class Character : MonoBehaviour
     private PlayerInput playerInput;
     private MoveData presentMove;
     private List<MoveData> moveQueue;
-    private int index, indexcount;
+    private int index;
     private bool moveEnd = true;
     public float descent = 2f;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void MoveStart()
     {
         moveQueue = playerInput.GetMoveQueue();
-        indexcount = moveQueue.Count;
         index = 0;
-        presentMove = moveQueue[0];
+
+        if(moveQueue.Count > 0)
+            presentMove = moveQueue[0];
+
         moveEnd = false;
-        //StartCoroutine(ProcessMoveQueue(moveQueue));
-
-    }
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
-        if (!moveEnd)
+        if (!moveEnd && presentMove.time > 0)
         {
             Vector2 moveDelta = presentMove.direction * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveDelta);
@@ -51,57 +47,30 @@ public class Character : MonoBehaviour
             if (presentMove.time <= 0)
             {
                 index += 1;
-                if (index < indexcount)
+                if (index < moveQueue.Count)
                     presentMove = moveQueue[index];
                 else
                 {
                     moveEnd = true;
                     moveQueue.Clear();
+                    playerInput.ResetMoveQueue();
+                    UIManager.Instance.ClearArrow();
                 }
-                    
-                    
             }
         }
     }
 
-    /*IEnumerator ProcessMoveQueue(List<MoveData> moveQueue)
-    {
-        foreach (MoveData move in moveQueue)
-        {
-            Debug.Log($"Move: {move}");
-            yield return StartCoroutine(MoveForTime(move.direction, move.time));
-        }
-
-        playerInput.ResetMoveQueue();
-        UIManager.Instance.ClearArrow();
-    }
-
-    IEnumerator MoveForTime(Vector3 dir, float duration)
-    {
-        float timer = 0f;
-
-        while (timer < duration)
-        {
-            transform.position += dir.normalized * moveSpeed * Time.deltaTime;
-            timer += Time.deltaTime;
-            yield return null;
-        }
-    }*/
 
     public PlayerInput GetPlayerInput()
     {
         return playerInput;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.ToString());
-
-        if (collision.tag == "Obstacle" || collision.tag == "Border")
-        {
-            StopAllCoroutines();
-            playerInput.ResetMoveQueue();
-            UIManager.Instance.ClearArrow();
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    moveEnd = true;
+    //
+    //    playerInput.ResetMoveQueue();
+    //    UIManager.Instance.ClearArrow();
+    //}
 }
