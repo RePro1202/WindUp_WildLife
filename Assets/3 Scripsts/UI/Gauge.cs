@@ -19,7 +19,9 @@ public class Gauge : MonoBehaviour
 
         maxValue = GameManager.Instance.GetMaxMoveTime();
         targetValue = maxValue;
-        //playerInput = GameManager.Instance.GetCharacter().GetPlayerInput();
+        
+        if(playerInput == null)
+            playerInput = GameManager.Instance.GetCharacter().GetPlayerInput();
     }
 
     private void Update()

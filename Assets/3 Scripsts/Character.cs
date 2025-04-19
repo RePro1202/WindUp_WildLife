@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
     {
         if(curStartCount >= GameManager.Instance.GetRemainStartCount())
         {
-            // TODO : 게임 오버 호출 해야함.
+            TitleManager.Instance.GameOver();
             Debug.Log("GameOver");
             return;
         }

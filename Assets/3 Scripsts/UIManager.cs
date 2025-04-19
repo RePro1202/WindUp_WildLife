@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(FadeInAndOut(true));
         int stageIndex = SceneManager.GetActiveScene().buildIndex;
-        stageTxt.text = "STAGE " + stageIndex;
+        //stageTxt.text = "STAGE " + stageIndex;
     }
 
     public void SpawnArrow(EKeyType eKeyType, float heldTime)
