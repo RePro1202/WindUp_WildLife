@@ -13,22 +13,22 @@ public class Car1Behaviour : MonoBehaviour
     {
         // 이동
         float movement = speed * Time.deltaTime * direction;
-        transform.position += new Vector3(0f, movement, 0f);
+        transform.position += new Vector3(movement, 0f, 0f);
 
         // 현재 위치 갱신
-        currentPosition = transform.position.y;
+        currentPosition = transform.position.x;
 
         // 방향 반전 조건
         if (currentPosition >= maxPosition || currentPosition <= minPosition)
         {
             if (direction == 1)
             {
-                transform.position += new Vector3(0f, - maxPosition + minPosition, 0f);
+                transform.position += new Vector3(-maxPosition + minPosition, 0f, 0f);
                 currentPosition = minPosition;
             }  
             else
             {
-                transform.position += new Vector3(0f, maxPosition - minPosition, 0f);
+                transform.position += new Vector3(maxPosition - minPosition, 0f, 0f);
                 currentPosition = maxPosition;
             }
         }
