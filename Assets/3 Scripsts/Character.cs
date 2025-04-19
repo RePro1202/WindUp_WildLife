@@ -38,7 +38,7 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!moveEnd)
         {
@@ -54,7 +54,12 @@ public class Character : MonoBehaviour
                 if (index < indexcount)
                     presentMove = moveQueue[index];
                 else
+                {
                     moveEnd = true;
+                    moveQueue.Clear();
+                }
+                    
+                    
             }
         }
     }
