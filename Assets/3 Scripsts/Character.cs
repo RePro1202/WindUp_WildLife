@@ -36,7 +36,7 @@ public class Character : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!moveEnd && presentMove.time > 0)
+        if (!moveEnd)
         {
             Vector2 moveDelta = presentMove.direction * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveDelta);
@@ -64,6 +64,11 @@ public class Character : MonoBehaviour
     public PlayerInput GetPlayerInput()
     {
         return playerInput;
+    }
+
+    public bool GetMoveEnd()
+    {
+        return moveEnd;
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)

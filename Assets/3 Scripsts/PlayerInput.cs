@@ -20,6 +20,11 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
+        if(!character.GetMoveEnd())
+        {
+            return;
+        }
+
         if(isPressed && currentKey.HasValue)
         {
             heldTime = Time.time - keyDownTime;
