@@ -6,16 +6,15 @@ public class PlayerInput : MonoBehaviour
 {
     private List<MoveData> moveList = new List<MoveData>();
 
+    private Character character;
+
     private KeyCode? currentKey = null;
     private float keyDownTime = 0f;       
-    private bool isPressed = false; 
+    private bool isPressed = false;
 
-    void Start()
+    private void Awake()
     {
-        //moveList.Add(new MoveData(Vector2.up, 3f));
-        //moveList.Add(new MoveData(Vector2.left, 1f));
-        //moveList.Add(new MoveData(Vector2.down, 2f));
-        //moveList.Add(new MoveData(Vector2.right, 1f));
+        character = GetComponent<Character>();
     }
 
     void Update()
@@ -36,11 +35,14 @@ public class PlayerInput : MonoBehaviour
                 else if (currentKey.Value == KeyCode.D)
                     moveList.Add(new MoveData(Vector2.right, heldTime));
 
+
+                updateRemainTime(heldTime);
+
                 isPressed = false;
                 currentKey = null;
             }
         }
-        else
+        else if(!(GameManager.Instance.GetTimeOut()))
         {
             if (Input.GetKeyDown(KeyCode.W))
                 PressKey(KeyCode.W);
@@ -51,6 +53,14 @@ public class PlayerInput : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.D))
                 PressKey(KeyCode.D);
         }
+
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    character.MoveStart();
+        //
+        //    isPressed = false;
+        //    currentKey = null;
+        //}
     }
 
     private void PressKey(KeyCode key)
@@ -58,6 +68,11 @@ public class PlayerInput : MonoBehaviour
         currentKey = key;
         keyDownTime = Time.time;
         isPressed = true;
+    }
+
+    private void updateRemainTime(float heldTime)
+    {
+        GameManager.Instance.SetRemainMoveTime(heldTime);
     }
 
     public List<MoveData> GetMoveQueue()
