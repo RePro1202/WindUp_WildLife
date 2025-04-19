@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9199370210952042847}
   - component: {fileID: 5543648492944062542}
   m_Layer: 5
-  m_Name: Arrow
+  m_Name: Arrow_W
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 540997939577735683, guid: efef83a1dcbfa1449a0c98a019ac47aa, type: 3}
+  m_Sprite: {fileID: 8117750489508839553, guid: 1c9bc0d104c01934da10d4333b9dc48b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

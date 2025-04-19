@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: efef83a1dcbfa1449a0c98a019ac47aa
+guid: 8f63162c00c63814e92a5799fb8deacd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 540997939577735683
-    second: pngtree-vector-left-arrow-icon-png-image_966660_0
+      213: -1654496013849780982
+    second: mat_green_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pngtree-vector-left-arrow-icon-png-image_966660_0
+      name: mat_green_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 360
-        height: 360
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 30acfbc72c2028700800000000000000
-      internalID: 540997939577735683
+      spriteID: a0d1f2c24ac0a09e0800000000000000
+      internalID: -1654496013849780982
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pngtree-vector-left-arrow-icon-png-image_966660_0: 540997939577735683
+      mat_green_0: -1654496013849780982
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
