@@ -265,8 +265,8 @@ GameObject:
   - component: {fileID: 3775244756431128285}
   - component: {fileID: 4104678231088079997}
   - component: {fileID: 2293093913496814794}
+  - component: {fileID: 5594805139935403804}
   - component: {fileID: 6599461672987050798}
-  - component: {fileID: 8918859688413849123}
   - component: {fileID: 8831351775186919005}
   - component: {fileID: 7834519537704757704}
   - component: {fileID: 3327348456475952292}
@@ -361,8 +361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e66a18f1d3da814da348ff1a3e16695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  descent: 0.6
 --- !u!114 &2293093913496814794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +373,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ca083028ab8494390db731c363b16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxQueueLength: 8
+--- !u!114 &5594805139935403804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4821283072642461994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149e8c59879faa940af250adf30a9c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
 --- !u!61 &6599461672987050798
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -422,33 +432,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &8918859688413849123
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4821283072642461994}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 100000
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!95 &8831351775186919005
 Animator:
   serializedVersion: 7
