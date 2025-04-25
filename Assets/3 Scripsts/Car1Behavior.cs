@@ -9,6 +9,8 @@ public class Car1Behaviour : MonoBehaviour
 
     public int direction = 1;          // 이동 방향: 1 = 오른쪽, -1 = 왼쪽
 
+    private Vector3 pushDir = Vector3.zero;
+
     void Update()
     {
         // 이동
@@ -25,17 +27,23 @@ public class Car1Behaviour : MonoBehaviour
             {
                 transform.position += new Vector3(-maxPosition + minPosition, 0f, 0f);
                 currentPosition = minPosition;
+
+                pushDir = Vector3.right;
             }  
             else
             {
                 transform.position += new Vector3(maxPosition - minPosition, 0f, 0f);
                 currentPosition = maxPosition;
+
+                pushDir = Vector3.left;
             }
         }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Game over");
-        TitleManager.Instance.GameOver();
+        if (other.TryGetComponent<CharacterMove>(out var characterMove))
+        {
+            characterMove.PushCharacter(transform.position, pushDir, speed);
+        }
     }
 }

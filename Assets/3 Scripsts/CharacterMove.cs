@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class CharacterMove : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class CharacterMove : MonoBehaviour
 
         if (collider.Count > 0)
         {
-            if (collider[0].tag == "Obstacle")
+            if (collider.Any(col => col.CompareTag("Obstacle"))) // TODO: 첫번째만 검사하면 안됨.
             {
                 isBump = true;
 
@@ -125,14 +126,6 @@ public class CharacterMove : MonoBehaviour
         return true;
     }
 
-    private Vector3 RoundVector3ToStep(Vector3 input, float step)
-    {
-        float x = Mathf.Round(input.x / step) * step;
-        float y = Mathf.Round(input.y / step) * step;
-        float z = Mathf.Round(input.z / step) * step;
-        return new Vector3(x, y, z);
-    }
-
     public void MoveEnd()
     {
         BumpHandle(curMoveData.direction);
@@ -140,5 +133,20 @@ public class CharacterMove : MonoBehaviour
         queueIndex = 0;
         moveQueue.Clear();
         character.MoveEnd();
+    }
+
+    public void PushCharacter(Vector3 pos, Vector3 direction, float speed)
+    {
+        character.SetIsMoving(false);
+        MoveEnd();
+        character.ResetPosition();
+    }
+
+    private Vector3 RoundVector3ToStep(Vector3 input, float step)
+    {
+        float x = Mathf.Round(input.x / step) * step;
+        float y = Mathf.Round(input.y / step) * step;
+        float z = Mathf.Round(input.z / step) * step;
+        return new Vector3(x, y, z);
     }
 }

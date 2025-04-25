@@ -563,7 +563,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1667846331034197159, guid: c704e6dcacc179847b5c9f82d5dd0fa9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.71
+      value: -2.555
       objectReference: {fileID: 0}
     - target: {fileID: 1667846331034197159, guid: c704e6dcacc179847b5c9f82d5dd0fa9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1960,6 +1960,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4811381856140726642}
+    - target: {fileID: 7517967453050997270, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickRetryBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410468400912567526, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410468400912567526, guid: a6805a4baf33e1e46bec1811658e7c3f, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

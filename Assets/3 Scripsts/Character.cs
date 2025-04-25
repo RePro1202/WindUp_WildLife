@@ -12,6 +12,8 @@ public class Character : MonoBehaviour
     private PlayerInput playerInput;
     private CharacterMove characterMove;
 
+    private Vector3 startPos;
+
     private bool isMoving = false;
 
     private int curStartCount = 0; // TODO : 다른 곳에서 처리 고려.
@@ -22,12 +24,10 @@ public class Character : MonoBehaviour
         characterMove = GetComponent<CharacterMove>();
     }
 
-    public void MoveEnd()
+    private void Start()
     {
-        playerInput.ResetMoveQueue();
-        UIManager.Instance.ClearArrow();
+        startPos = transform.position;
     }
-
 
     public void MoveStart()
     {
@@ -42,6 +42,12 @@ public class Character : MonoBehaviour
         SetIsMoving(isMove);
 
         GameManager.Instance.SetRemainStartCount();
+    }
+
+    public void MoveEnd()
+    {
+        playerInput.ResetMoveQueue();
+        UIManager.Instance.ClearArrow();
     }
 
 
@@ -59,5 +65,10 @@ public class Character : MonoBehaviour
     public bool GetIsMoving()
     {
         return isMoving;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startPos;
     }
 }
