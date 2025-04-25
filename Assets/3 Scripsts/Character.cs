@@ -5,73 +5,43 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Experimental.Rendering;
+using UnityEngine.PlayerLoop;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 2f;
-    private Rigidbody2D rb;
     private PlayerInput playerInput;
-    private MoveData presentMove;
-    private List<MoveData> moveQueue;
-    private int index;
-    private bool isMoving = false;
-    public float descent = 2f;
+    private CharacterMove characterMove;
 
-    private int curStartCount = 0;
+    private bool isMoving = false;
+
+    private int curStartCount = 0; // TODO : 다른 곳에서 처리 고려.
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
-        rb = GetComponent<Rigidbody2D>();
+        characterMove = GetComponent<CharacterMove>();
     }
+
+    public void MoveEnd()
+    {
+        playerInput.ResetMoveQueue();
+        UIManager.Instance.ClearArrow();
+    }
+
 
     public void MoveStart()
     {
-        if(curStartCount >= GameManager.Instance.GetRemainStartCount())
+        if (curStartCount >= GameManager.Instance.GetRemainStartCount())
         {
             UIManager.Instance.ShowRetryUI();
             return;
         }
 
-        moveQueue = playerInput.GetMoveQueue();
-        index = 0;
+        bool isMove = characterMove.MoveStart(playerInput.GetMoveQueue());
 
-        if (moveQueue.Count < 1)
-        {
-            return;
-        }
-
-        presentMove = moveQueue[0];
-
-        SetIsMoving(true);
+        SetIsMoving(isMove);
 
         GameManager.Instance.SetRemainStartCount();
-    }
-
-    void FixedUpdate()
-    {
-        if (isMoving)
-        {
-            Vector2 moveDelta = presentMove.direction * moveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + moveDelta);
-
-            presentMove.time -= descent * Time.fixedDeltaTime;
-            Debug.Log("시간: " + presentMove.time.ToString("F2"));
-
-            if (presentMove.time <= 0)
-            {
-                index += 1;
-                if (index < moveQueue.Count)
-                    presentMove = moveQueue[index];
-                else
-                {
-                    SetIsMoving(false);
-                    moveQueue.Clear();
-                    playerInput.ResetMoveQueue();
-                    UIManager.Instance.ClearArrow();
-                }
-            }
-        }
     }
 
 
@@ -80,7 +50,7 @@ public class Character : MonoBehaviour
         return playerInput;
     }
 
-    private void SetIsMoving(bool b)
+    public void SetIsMoving(bool b)
     {
         isMoving = b;
         GetComponent<Animator>().SetBool("IsMove", b);
@@ -89,12 +59,5 @@ public class Character : MonoBehaviour
     public bool GetIsMoving()
     {
         return isMoving;
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        Vector2 wallNormal = collision.contacts[0].normal;
-        Vector2 moveDelta = - wallNormal * 0.005f;
-        rb.MovePosition(rb.position + moveDelta);
     }
 }

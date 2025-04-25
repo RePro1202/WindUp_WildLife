@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] int maxQueueLength = 8;
+    private const int maxQueueLength = 8;
 
     private List<MoveData> moveList = new List<MoveData>();
 
