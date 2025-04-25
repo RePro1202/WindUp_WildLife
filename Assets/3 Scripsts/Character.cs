@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     private MoveData presentMove;
     private List<MoveData> moveQueue;
     private int index;
-    private bool moveEnd = true;
+    private bool isMoving = false;
     public float descent = 2f;
 
     private int curStartCount = 0;
@@ -42,14 +42,15 @@ public class Character : MonoBehaviour
         }
 
         presentMove = moveQueue[0];
-        moveEnd = false;
+
+        SetIsMoving(true);
 
         GameManager.Instance.SetRemainStartCount();
     }
 
     void FixedUpdate()
     {
-        if (!moveEnd)
+        if (isMoving)
         {
             Vector2 moveDelta = presentMove.direction * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveDelta);
@@ -64,7 +65,7 @@ public class Character : MonoBehaviour
                     presentMove = moveQueue[index];
                 else
                 {
-                    moveEnd = true;
+                    SetIsMoving(false);
                     moveQueue.Clear();
                     playerInput.ResetMoveQueue();
                     UIManager.Instance.ClearArrow();
@@ -79,9 +80,15 @@ public class Character : MonoBehaviour
         return playerInput;
     }
 
-    public bool GetMoveEnd()
+    private void SetIsMoving(bool b)
     {
-        return moveEnd;
+        isMoving = b;
+        GetComponent<Animator>().SetBool("IsMove", b);
+    }
+
+    public bool GetIsMoving()
+    {
+        return isMoving;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -89,14 +96,5 @@ public class Character : MonoBehaviour
         Vector2 wallNormal = collision.contacts[0].normal;
         Vector2 moveDelta = - wallNormal * 0.005f;
         rb.MovePosition(rb.position + moveDelta);
-
     }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    moveEnd = true;
-    //
-    //    playerInput.ResetMoveQueue();
-    //    UIManager.Instance.ClearArrow();
-    //}
 }

@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if(!character.GetMoveEnd())
+        if(character.GetIsMoving())
         {
             return;
         }
