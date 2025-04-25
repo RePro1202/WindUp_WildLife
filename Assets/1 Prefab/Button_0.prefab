@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2957886046606271018}
   - component: {fileID: 7844343232204525671}
   - component: {fileID: 479190995758813991}
+  - component: {fileID: 34668517018090311}
   m_Layer: 0
   m_Name: Button_0
   m_TagString: Untagged
@@ -151,3 +152,30 @@ MonoBehaviour:
   isActivated: 0
   inactiveSprite: {fileID: 649223268058989734, guid: a333a3d506563d447af1c8d5d18d1e82, type: 3}
   activeSprite: {fileID: 5783866040106013654, guid: 392f00959eb177845a9a74842be04112, type: 3}
+--- !u!50 &34668517018090311
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649785982104085543}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
