@@ -86,8 +86,10 @@ public class Character : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Vector2 moveDelta = - presentMove.direction * 0.005f;
+        Vector2 wallNormal = collision.contacts[0].normal;
+        Vector2 moveDelta = - wallNormal * 0.005f;
         rb.MovePosition(rb.position + moveDelta);
+
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)
