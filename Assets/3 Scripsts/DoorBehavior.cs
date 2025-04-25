@@ -35,7 +35,7 @@ public class DoorBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsOpen)
+        if (IsOpen && other.CompareTag("Player"))
         {
             StartCoroutine(TitleManager.Instance.StageClear());
         }

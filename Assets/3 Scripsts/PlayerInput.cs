@@ -31,6 +31,12 @@ public class PlayerInput : MonoBehaviour
         if(isPressed && currentKey.HasValue)
         {
             heldTime = Time.time - keyDownTime;
+
+            if(GameManager.Instance.GetRemainMoveTime() <= heldTime)
+            {
+                heldTime = GameManager.Instance.GetRemainMoveTime();
+            }
+
             UIManager.Instance.UpdateLastArrowTime(heldTime);
 
             if (Input.GetKeyUp(currentKey.Value))
