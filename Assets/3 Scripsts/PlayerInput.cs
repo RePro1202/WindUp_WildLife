@@ -5,15 +5,14 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    private const int maxQueueLength = 8;
+    private const int MAX_QUEUE_LENGTH = 8;
 
     private List<MoveData> moveList = new List<MoveData>();
 
     private Character character;
 
-    private KeyCode? currentKey = null;
-    private float keyDownTime = 0f;       
-    private bool isPressed = false;
+    private KeyCode? currentPressedKey = null;
+    private float keyDownTime = 0f;
     private float heldTime = 0f;
 
     private void Awake()
@@ -21,85 +20,87 @@ public class PlayerInput : MonoBehaviour
         character = GetComponent<Character>();
     }
 
-    void Update()
+    private void Update()
     {
-        if(character.GetIsMoving())
+        if (character.GetIsMoving())
         {
             return;
         }
 
-        if(isPressed && currentKey.HasValue)
+        if (currentPressedKey.HasValue)
         {
-            heldTime = Time.time - keyDownTime;
-
-            if(GameManager.Instance.GetRemainMoveTime() <= heldTime)
-            {
-                heldTime = GameManager.Instance.GetRemainMoveTime();
-            }
-
-            UIManager.Instance.UpdateLastArrowTime(heldTime);
-
-            if (Input.GetKeyUp(currentKey.Value))
-            {
-                Debug.Log($"{currentKey} 눌린 시간: {heldTime:F2}초");
-
-                if (currentKey.Value == KeyCode.W)
-                {
-                    moveList.Add(new MoveData(Vector2.up, heldTime));
-                }
-                else if (currentKey.Value == KeyCode.A)
-                {
-                    moveList.Add(new MoveData(Vector2.left, heldTime));
-                } 
-                else if (currentKey.Value == KeyCode.S)
-                {
-                    moveList.Add(new MoveData(Vector2.down, heldTime));
-                }
-                else if (currentKey.Value == KeyCode.D)
-                {
-                    moveList.Add(new MoveData(Vector2.right, heldTime));
-                }
-                updateRemainTime(heldTime);
-
-                isPressed = false;
-                currentKey = null;
-            }
+            HandleKeyHold();
         }
-        else if(!(GameManager.Instance.GetTimeOut()))
+        else if (!(GameManager.Instance.GetTimeOut()))
         {
-            if (maxQueueLength <= moveList.Count)
+            if (MAX_QUEUE_LENGTH <= moveList.Count)
             {
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                PressKey(KeyCode.W);
-                UIManager.Instance.SpawnArrow(EKeyType.W, heldTime);
-            }
-            else if (Input.GetKeyDown(KeyCode.A))
-            {
-                PressKey(KeyCode.A);
-                UIManager.Instance.SpawnArrow(EKeyType.A, heldTime);
-            }
-            else if (Input.GetKeyDown(KeyCode.S))
-            {
-                PressKey(KeyCode.S);
-                UIManager.Instance.SpawnArrow(EKeyType.S, heldTime);
-            } 
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                PressKey(KeyCode.D);
-                UIManager.Instance.SpawnArrow(EKeyType.D, heldTime);
-            }
+            HandleKeyPress();
         }
     }
 
-    private void PressKey(KeyCode key)
+    private void HandleKeyHold()
     {
-        currentKey = key;
-        keyDownTime = Time.time;
-        isPressed = true;
+        heldTime = Time.time - keyDownTime;
+
+        // 남은 시간보다 오래 누르면 남은 시간으로 고정.
+        float remainTime = GameManager.Instance.GetRemainMoveTime();
+        if (remainTime <= heldTime)
+        {
+            heldTime = remainTime;
+        }
+
+        UIManager.Instance.UpdateLastArrowTime(heldTime);
+
+        // 키 입력 종료된 시점에, 이동 리스트에 추가.
+        if (Input.GetKeyUp(currentPressedKey.Value))
+        {
+            Vector2 moveDir = KeyToDirection(currentPressedKey.Value);
+            moveList.Add(new MoveData(moveDir, heldTime));
+
+            updateRemainTime(heldTime);
+
+            currentPressedKey = null;
+        }
+    }
+
+    // 입력키 추가할 경우 해당 함수에 추가.
+    private void HandleKeyPress()
+    {
+        if (CheckKeyPress(KeyCode.W, EKeyType.W, Vector2.up)) return;
+        if (CheckKeyPress(KeyCode.A, EKeyType.A, Vector2.left)) return;
+        if (CheckKeyPress(KeyCode.S, EKeyType.S, Vector2.down)) return;
+        if (CheckKeyPress(KeyCode.D, EKeyType.D, Vector2.right)) return;
+    }
+
+    private bool CheckKeyPress(KeyCode key, EKeyType keyType, Vector2 direction)
+    {
+        if (Input.GetKeyDown(key))
+        {
+            currentPressedKey = key;
+            keyDownTime = Time.time;
+
+            UIManager.Instance.SpawnArrow(keyType, heldTime);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private Vector2 KeyToDirection(KeyCode key)
+    {
+        switch (key)
+        {
+            case KeyCode.W: return Vector2.up;
+            case KeyCode.A: return Vector2.left;
+            case KeyCode.S: return Vector2.down;
+            case KeyCode.D: return Vector2.right;
+            default: return Vector2.zero;
+        }
     }
 
     private void updateRemainTime(float heldTime)
