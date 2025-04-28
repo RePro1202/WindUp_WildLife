@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 153699776}
   - component: {fileID: 153699775}
   - component: {fileID: 153699774}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap_Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 769433637}
   - component: {fileID: 769433636}
   - component: {fileID: 769433638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap_Border
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

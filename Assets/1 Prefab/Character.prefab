@@ -386,6 +386,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
+  bumpThreshold: 0.01
 --- !u!61 &6599461672987050798
 BoxCollider2D:
   m_ObjectHideFlags: 0
